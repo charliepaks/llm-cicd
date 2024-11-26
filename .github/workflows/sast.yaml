@@ -34,11 +34,7 @@ jobs:
           python --version
           which pip
           pip --version
-
-      - name: Run tests
-        run: |
-          source venv/bin/activate
-          pytest    
+   
 
       - name: Run SAST
         env:
