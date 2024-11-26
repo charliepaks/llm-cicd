@@ -6,7 +6,7 @@ import openai
 import os
 import sys
 
-# Retrieve the OpenAI api key from environment variables
+# Retrieve thee OpenAI api key from environment variables
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 if not OPENAI_API_KEY:
