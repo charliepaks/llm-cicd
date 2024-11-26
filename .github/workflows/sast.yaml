@@ -25,7 +25,8 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-          pip install langchain openai
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt 
 
       - name: Run SAST
         env:
