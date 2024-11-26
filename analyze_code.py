@@ -30,6 +30,7 @@ def analyze_code_chunk(chunk, chat_model):
     """
     Analyzes a single chunk of code using the LLM.
     """
+    chat_model = ChatOpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
     prompt_template = ChatPromptTemplate.from_template(
         """
         You are a security expert. Analyze the following code chunk for vulnerabilities:
