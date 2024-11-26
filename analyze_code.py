@@ -33,8 +33,9 @@ def analyze_code_chunk(chunk, chat_model):
     
     prompt_template = ChatPromptTemplate.from_template(
         """
-        You are an application security expert. Analyze the following code chunk thoroughly for vulnerabilities. Do not just look for critical 
-        issues. Identify issues of medium and low severity too. When you find the issues, enumerate them all:
+        You are an application security expert. Analyze the following code chunk thoroughly for vulnerabilities according to the owasp code review guide. Do not just look for critical 
+        issues. Identify issues of medium and low severity too. When you find the issues, enumerate them all and report them per the owasp code review guide standard. Start with the first finding and let the last finding
+        be the end of the report.:
         {code}
 
         Provide:
