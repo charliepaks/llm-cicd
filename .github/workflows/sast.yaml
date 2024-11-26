@@ -26,8 +26,19 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           python -m pip install --upgrade pip
-          pip install langchain
-          pip install openai
+          pip install --no-cache-dir -r requirements.txt
+          
+      - name: Check Python and pip versions
+        run: |
+          which python
+          python --version
+          which pip
+          pip --version
+
+      - name: Run tests
+          run: |
+            source venv/bin/activate
+            pytest    
 
       - name: Run SAST
         env:
