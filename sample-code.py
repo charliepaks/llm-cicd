@@ -1,46 +1,25 @@
-import numpy as np
-import matplotlib.pyplot as plt
+import sqlite3
+import flask
 
-def simulate_stock_prices(initial_price, volatility, time_steps, num_simulations):
-  """
-  Simulates stock price paths using Geometric Brownian Motion (GBM).
+app = flask.Flask(__name__)
 
-  Args:
-    initial_price: The initial stock price.
-    volatility: The volatility of the stock price.
-    time_steps: The number of time steps to simulate.
-    num_simulations: The number of simulations to run.
+def get_user_info(user_id):
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
 
-  Returns:
-    A NumPy array of shape (num_simulations, time_steps) containing the simulated stock prices.
-  """
+    # Vulnerable SQL query
+    query = f"SELECT * FROM users WHERE id = {user_id}"
+    cursor.execute(query)
+    result = cursor.fetchone()
+    conn.close()
 
-  dt = 1 / time_steps
-  mu = 0  # Assuming risk-free rate is zero
-  
-  # Generate random numbers from a standard normal distribution
-  z = np.random.randn(num_simulations, time_steps)
+    return result
 
-  # Calculate the stock price at each time step for each simulation
-  stock_prices = np.zeros((num_simulations, time_steps))
-  stock_prices[:, 0] = initial_price
-  for i in range(1, time_steps):
-    stock_prices[:, i] = stock_prices[:, i - 1] * np.exp((mu - 0.5 * volatility**2) * dt + volatility * np.sqrt(dt) * z[:, i])
+@app.route('/')
+def index():
+    user_id = flask.request.args.get('user_id')
+    user_info = get_user_info(user_id)
+    return f"User information: {user_info}"
 
-  return stock_prices
-
-# Example usage:
-initial_price = 100
-volatility = 0.2
-time_steps = 252  # Assuming 252 trading days in a year
-num_simulations = 1000
-
-simulated_prices = simulate_stock_prices(initial_price, volatility, time_steps, num_simulations)
-
-# Plot the simulated stock price paths
-plt.figure(figsize=(10, 6))
-plt.plot(simulated_prices.T)
-plt.xlabel("Time Steps")
-plt.ylabel("Stock Price")
-plt.title("Simulated Stock Price Paths")
-plt.show()
+if __name__ == '__main__':
+    app.run(debug=True)
