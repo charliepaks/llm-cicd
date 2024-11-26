@@ -33,7 +33,8 @@ def analyze_code_chunk(chunk, chat_model):
     
     prompt_template = ChatPromptTemplate.from_template(
         """
-        You are a security expert. Analyze the following code chunk for vulnerabilities:
+        You are an application security expert. Analyze the following code chunk thoroughly for vulnerabilities. Do not just look for critical 
+        issues. Identify issues of medium and low severity too. When you find the issues, enumerate them all:
         {code}
 
         Provide:
