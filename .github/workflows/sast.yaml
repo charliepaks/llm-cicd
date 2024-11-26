@@ -26,7 +26,7 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           python -m pip install --upgrade pip
-          pip install --no-cache-dir -r requirements.txt
+          pip install --no-cache-dir -r requirements.txt -t .
 
       - name: Check Python and pip versions
         run: |
@@ -40,4 +40,4 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python analyze_code.py path/to/codefile.py
+          python analyze_code.py sample-code.py 
