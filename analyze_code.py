@@ -50,7 +50,7 @@ def analyze_large_file(file_content):
     """
     Handles large files by splitting them into chunks and analyzing each chunk.
     """
-    chat = ChatOpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
+    chat = ChatOpenAI(temperature=0, model="gpt-4o", openai_api_key=OPENAI_API_KEY)
     chunks = split_code_with_langchain(file_content)
     results = []
     for i, chunk in enumerate(chunks):
