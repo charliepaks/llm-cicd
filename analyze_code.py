@@ -83,11 +83,7 @@ def scan_directory(directory="."):
     return results
     
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python analyze_code.py <file_path>")
-        sys.exit(1)
-
-    file_path = sys.argv[1]
+    file_path = os.getcwd()
 
     if os.path.isfile(file_path):
         result = process_file(file_path)
