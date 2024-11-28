@@ -43,7 +43,7 @@ def analyze_code_chunk(chunk, chat_model):
     )
     prompt = prompt_template.format(code=chunk)
     response = chat_model.invoke(prompt)
-    return response.content
+    return response
 
 def analyze_large_file(file_content):
     
