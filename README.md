@@ -1,3 +1,10 @@
+## Author
+
+- **Charles Chibueze**  
+  - [GitHub Profile](https://github.com/charliepaks)  
+  - [LinkedIn](https://linkedin.com/charles-chibueze-cissp-cism-ceh-pnpt-2358a2112/)  
+  - [Email](charlesukpaka@ymail.com)
+
 🛡️ **CI/CD with LLM for Static Application Security Testing (SAST)**
 
 Welcome to the LLM Powered SAST project! This repository integrates an LLM-powered Python script into a GitHub Actions CI/CD pipeline to automatically analyze code files for security vulnerabilities during pull requests and pushes.
