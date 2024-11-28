@@ -1,4 +1,9 @@
 
+# Author: Charles Chibueze
+# Email: charlesukpaka@ymail.com
+# GitHub: https://github.com/charliepaks
+# LinkedIn: https://www.linkedin.com/in/charles-chibueze-cissp-cism-ceh-pnpt-2358a2112/
+
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.text_splitter import CharacterTextSplitter
@@ -6,7 +11,12 @@ import openai
 import os
 import sys
 
+# uncomment this part if you want to test the project locally
+#from dotenv import load_dotenv, find_dotenv
+#_ = load_dotenv(find_dotenv())
+#openai_api_key = os.environ["OPENAI_API_KEY"]
 
+# Comment the one liner below if you want to test the project locally
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 if not OPENAI_API_KEY:
