@@ -15,6 +15,7 @@ Welcome to the LLM Powered SAST project! This repository integrates an LLM-power
 - Actionable Feedback: Provides detailed vulnerability descriptions, confidence levels, severity ratings, and remediation suggestions.
 
 **📂 Directory Structure**
+
 llm-cicd/
 │
 ├── .github/
