@@ -6,7 +6,7 @@ import openai
 import os
 import sys
 
-# Retrieve the OpenAI api key from environment variables
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 if not OPENAI_API_KEY:
@@ -16,9 +16,7 @@ if not OPENAI_API_KEY:
 openai.api_key = OPENAI_API_KEY
 
 def split_code_with_langchain(content, chunk_size=3000, chunk_overlap=200):
-    """
-    Splits the code into chunks using LangChain's CharacterTextSplitter.
-    """
+    
     splitter = CharacterTextSplitter(
         separator="\n",  # Split by newlines
         chunk_size=chunk_size,
@@ -27,9 +25,7 @@ def split_code_with_langchain(content, chunk_size=3000, chunk_overlap=200):
     return splitter.split_text(content)
 
 def analyze_code_chunk(chunk, chat_model):
-    """
-    Analyzes a single chunk of code using the LLM.
-    """
+    
     
     prompt_template = ChatPromptTemplate.from_template(
         """
@@ -50,10 +46,8 @@ def analyze_code_chunk(chunk, chat_model):
     return response.content
 
 def analyze_large_file(file_content):
-    """
-    Handles large files by splitting them into chunks and analyzing each chunk.
-    """
-    chat = ChatOpenAI(temperature=0, model="gpt-4o", openai_api_key=OPENAI_API_KEY)
+    
+    chat = ChatOpenAI(temperature=0, model="gpt-3.5-turbo", openai_api_key=OPENAI_API_KEY)
     chunks = split_code_with_langchain(file_content)
     results = []
     for i, chunk in enumerate(chunks):
@@ -64,9 +58,7 @@ def analyze_large_file(file_content):
     return results
 
 def process_file(file_path):
-    """
-    Reads and analyzes a single file.
-    """
+    
     try:
         with open(file_path, "r", encoding="utf-8") as file:
             code_content = file.read()
@@ -77,10 +69,8 @@ def process_file(file_path):
         print(f"Error processing file {file_path}: {e}")
         return {"file": file_path, "error": str(e)}
     
-def scan_directory(directory):
-    """
-    Scans a directory recursively for code files and analyzes them.
-    """
+def scan_directory(directory="."):
+    
     supported_extensions = {".py", ".js", ".java", ".cpp", ".c", ".rb", ".go"}  
     results = []
     for root, _, files in os.walk(directory):
