@@ -57,7 +57,7 @@ def analyze_code_chunk(chunk, chat_model):
 
 def analyze_large_file(file_content):
     
-    chat = ChatOpenAI(temperature=0, model="gpt-3.5-turbo", openai_api_key=OPENAI_API_KEY)
+    chat = ChatOpenAI(temperature=0, model="gpt-4o", openai_api_key=OPENAI_API_KEY)
     chunks = split_code_with_langchain(file_content)
     results = []
     for i, chunk in enumerate(chunks):
