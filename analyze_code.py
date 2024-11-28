@@ -88,7 +88,7 @@ def process_results(results):
 
     for result in results:
         for finding in result.get("analysis", []):
-            if "Potential Severity: High" in result.get("analysis", ""):
+            if "Potential Severity: High" in finding.get("analysis", ""):
                 high_severity_found = True
                 print(f"High-severity issue found")
 
