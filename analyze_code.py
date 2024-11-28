@@ -77,6 +77,21 @@ def process_file(file_path):
         print(f"Error processing file {file_path}: {e}")
         return {"file": file_path, "error": str(e)}
     
+def scan_directory(directory):
+    """
+    Scans a directory recursively for code files and analyzes them.
+    """
+    supported_extensions = {".py", ".js", ".java", ".cpp", ".c", ".rb", ".go"}  
+    results = []
+    for root, _, files in os.walk(directory):
+        for file in files:
+            file_path = os.path.join(root, file)
+            _, extension = os.path.splitext(file)
+            if extension in supported_extensions:
+                result = process_file(file_path)
+                results.append(result)
+    return results
+    
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python analyze_code.py <file_path>")
@@ -92,5 +107,15 @@ if __name__ == "__main__":
             print(f"Chunk {chunk_result['chunk']}:\n")
             print(chunk_result.get("analysis", chunk_result.get("error")))
             print("\n" + "-" * 80 + "\n")
+
+    elif os.path.isdir(path):
+        results = scan_directory(path)
+        for result in results:
+            print("\n--- Vulnerability Analysis Report ---\n")
+            print(f"File: {result['file']}\n")
+            for chunk_result in result.get("analysis", []):
+                print(f"Chunk {chunk_result['chunk']}:\n")
+                print(chunk_result.get("analysis", chunk_result.get("error")))
+                print("\n" + "-" * 80 + "\n")
     else:
-        print("Invalid path. Please provide a valid file.")
+        print("Invalid path. Please provide a valid file or directory.")
