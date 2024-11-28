@@ -17,10 +17,15 @@ Welcome to the LLM Powered SAST project! This repository integrates an LLM-power
 **📂 Directory Structure**
 
 llm-cicd/
+
 │
+
 ├── .github/
+
 │   └── workflows/
+
 │       └── sast.yml        
+
 ├── analyze_code.py         
 ├── requirements.txt        
 ├── vulnerable-code-files/                
