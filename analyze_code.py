@@ -90,14 +90,14 @@ def process_results(results):
         for finding in result.get("analysis", []):
             if "Potential Severity: High" in finding.get("analysis", ""):
                 high_severity_found = True
-                print(f"High-severity issue found")
+                
 
     if high_severity_found:
         print("Failing due to at least 1 high-severity vulnerability.")
-        sys.exit(1)  # Non-zero exit code to indicate failure
+        sys.exit(1)  
 
     print("Success! No high-severity vulnerabilities found.")
-    sys.exit(0)  # Success exit code
+    sys.exit(0)  
     
 if __name__ == "__main__":
     if len(sys.argv) < 2:
