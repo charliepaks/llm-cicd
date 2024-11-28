@@ -81,6 +81,23 @@ def scan_directory(directory="."):
                 result = process_file(file_path)
                 results.append(result)
     return results
+
+def process_results(results):
+    
+    high_severity_found = False
+
+    for result in results:
+        for finding in result.get("analysis", []):
+            if finding.get("severity") == "high":
+                high_severity_found = True
+                print(f"High-severity issue found")
+
+    if high_severity_found:
+        print("Failing due to at least 1 high-severity vulnerability.")
+        sys.exit(1)  # Non-zero exit code to indicate failure
+
+    print("Success! No high-severity vulnerabilities found.")
+    sys.exit(0)  # Success exit code
     
 if __name__ == "__main__":
     if len(sys.argv) < 2:
@@ -109,3 +126,5 @@ if __name__ == "__main__":
                 print("\n" + "-" * 80 + "\n")
     else:
         print("Invalid path. Please provide a valid file or directory.")
+    process_results(results)
+    
