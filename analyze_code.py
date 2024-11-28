@@ -40,6 +40,7 @@ def analyze_code_chunk(chunk, chat_model):
 
         Provide:
         - Vulnerability description
+        - Confidence (low, medium, high)
         - Potential severity (low, medium, high)
         - Suggestions for fixing the issue
         """
