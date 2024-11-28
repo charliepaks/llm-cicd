@@ -24,7 +24,7 @@ if not OPENAI_API_KEY:
     sys.exit(1)
 
 openai.api_key = OPENAI_API_KEY
-openai.proxy = None 
+ 
 
 def split_code_with_langchain(content, chunk_size=3000, chunk_overlap=200):
     
