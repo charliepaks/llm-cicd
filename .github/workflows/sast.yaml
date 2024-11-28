@@ -40,4 +40,4 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python analyze_code.py /home/runner/work/llm-cicd/llm-cicd/
+          python analyze_code.py .
