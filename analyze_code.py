@@ -108,8 +108,8 @@ if __name__ == "__main__":
             print(chunk_result.get("analysis", chunk_result.get("error")))
             print("\n" + "-" * 80 + "\n")
 
-    elif os.path.isdir(path):
-        results = scan_directory(path)
+    elif os.path.isdir(file_path):
+        results = scan_directory(file_path)
         for result in results:
             print("\n--- Vulnerability Analysis Report ---\n")
             print(f"File: {result['file']}\n")
