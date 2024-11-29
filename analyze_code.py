@@ -40,19 +40,31 @@ def analyze_code_chunk(chunk, chat_model):
     
     prompt_template = ChatPromptTemplate.from_template(
         """
-        You are an application security expert. Analyze the following code chunk thoroughly for vulnerabilities according to the owasp code review guide. Do not just look for critical 
+        You are an application security and cloud security expert. if the chunk presented to you has code in it, analyze the following code chunk thoroughly for vulnerabilities according to the owasp code review guide. Do not just look for critical 
         issues. Identify issues of medium and low severity too. When you find the issues, enumerate them all and report them per the owasp code review guide standard. Start with the first finding and let the last finding
-        be the end of the report. Do not write anything after the last vulnerability has been documented. Write the report in plain text and not markdown.:
-        {code}
+        be the end of the report. Do not write anything after the last vulnerability has been documented. Write the report in plain text and not markdown.
 
-        Provide:
+        If the chunk presented to you is a terraform file, analyze the following Terraform file and identify potential security issues. Review it according
+        to best practices and guidelines such as the CIS Benchmarks, OWASP IaC Security principles, and cloud provider-specific security recommendations (e.g., AWS, Azure, GCP).
+        
+    :
+        {chunk}
+
+        If it's a code file, provide:
         - Vulnerability description
         - Confidence (low, medium, high)
         - Potential severity (low, medium, high)
         - Suggestions for fixing the issue
+        
+        If it's a terraform file, provide:
+        - A summary of identified issues.
+        - Detailed explanations of each issue.
+        - Confidence levels (low, medium, high).
+        - Severity levels (low, medium, high).
+        - Suggestions for fixing each issue.
         """
     )
-    prompt = prompt_template.format(code=chunk)
+    prompt = prompt_template.format(chunk=chunk)
     response = chat_model.invoke(prompt)
     return response.content
 

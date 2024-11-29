@@ -41,4 +41,5 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           python analyze_code.py vulnerable-code-files
+          python analyze_code.py vulnerable-terra-files
         continue-on-error: false
