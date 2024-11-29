@@ -5,11 +5,11 @@
   - [LinkedIn](https://linkedin.com/charles-chibueze-cissp-cism-ceh-pnpt-2358a2112/)  
   - [Email](charlesukpaka@ymail.com)
 
-🛡️ **CI/CD with LLM for Static Application Security Testing (SAST)**
+## 🛡️ **CI/CD with LLM for Static Application Security Testing (SAST)**
 
 Welcome to the LLM Powered SAST project! This repository integrates an LLM-powered Python script into a GitHub Actions CI/CD pipeline to automatically analyze code files for security vulnerabilities during pull requests and pushes.
 
-🚀 **Features**
+## 🚀 **Features**
 
 - **Automated Code Scanning**: Scans all code files in the repository for vulnerabilities using OpenAI's GPT-4.
 
@@ -21,9 +21,9 @@ Welcome to the LLM Powered SAST project! This repository integrates an LLM-power
 
 - **Actionable Feedback**: Provides detailed vulnerability descriptions, confidence levels, severity ratings, and remediation suggestions.
 
-**⚙️ Setup and Installation**
+## **⚙️ Setup and Installation**
 
-Prerequisites
+**Prerequisites**
 
 - **Python**: Ensure you have Python 3.10 or later installed.
 - **Git**: Install Git to clone and manage your repository.
@@ -64,7 +64,7 @@ If you want to test the project locally:
 - Add the secret to a .env file this way:  OPENAI_API_KEY = your-api-key-here
 - Check the analyze_code.py file and uncomment the portion that will let you test the project locally. There is also a one liner to put in comments to make this work.
 
-**🔄 Workflow Overview**
+## **🔄 Workflow Overview**
 
 The CI/CD pipeline is triggered during:
 
@@ -83,7 +83,7 @@ Executes the analyze_code.py script to scan all files in the repository.
 The workflow fails if any high-severity vulnerabilities are detected.
 
 
-**🛠️ Usage**
+## **🛠️ Usage**
 
 **Local Testing**:
 
@@ -91,7 +91,7 @@ Run the analyze_code.py script locally for testing:
 
 _python analyze_code.py <file_or_directory_path>_
 
-**GitHub Actions**:
+## **GitHub Actions**:
 
 Simply commit and push your changes to trigger the workflow:
 
@@ -99,7 +99,7 @@ _git add .
 git commit -m "Commit message"
 git push origin main_
 
-**📖 Configuration**
+## **📖 Configuration**
 
 **Workflow File**: .github/workflows/sast.yml
 
@@ -109,17 +109,17 @@ Modify the workflow file to match your project's requirements. Key sections incl
 
 - **OpenAI API Key**: Ensure the key is stored securely as a GitHub Secret (OPENAI_API_KEY).
 
-**🌟 Contributing**
+## **🌟 Contributing**
 
 Contributions are very much welcome! Feel free to submit issues or pull requests for bug fixes, enhancements, or new features.
 
-**🛡️ Security**
+## **🛡️ Security**
 
 - Ensure your OpenAI API Key is kept confidential.
 
 - Also ensure you regularly update dependencies to avoid security vulnerabilities in libraries.
 
-**📝 License**
+## **📝 License**
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
