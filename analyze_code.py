@@ -11,7 +11,7 @@ import openai
 import os
 import sys
 
-# Uncommente this part below if you want to test the project locally
+# Uncommentee this part below if you want to test the project locally
 #from dotenv import load_dotenv, find_dotenv
 #_ = load_dotenv(find_dotenv())
 #openai_api_key = os.environ["OPENAI_API_KEY"]
