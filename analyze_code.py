@@ -94,7 +94,7 @@ def process_file(file_path):
     
 def scan_directory(directory="."):
     
-    supported_extensions = {".py", ".js", ".java", ".cpp", ".c", ".rb", ".go"}  
+    supported_extensions = {".py", ".js", ".java", ".cpp", ".c", ".rb", ".go", ".tf"}  
     results = []
     for root, _, files in os.walk(directory):
         for file in files:
@@ -111,7 +111,7 @@ def process_results(results):
 
     for result in results:
         for finding in result.get("analysis", []):
-            if "Potential Severity: High" in finding.get("analysis", ""):
+            if "Potential Severity: High" in finding.get("analysis", "").lower():
                 high_severity_found = True
                 
 
