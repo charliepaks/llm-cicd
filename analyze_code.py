@@ -10,6 +10,7 @@ from langchain.text_splitter import CharacterTextSplitter
 import openai
 import os
 import sys
+import re
 
 # Uncommentee this part below if you want to test the project locally
 #from dotenv import load_dotenv, find_dotenv
@@ -111,7 +112,7 @@ def process_results(results):
 
     for result in results:
         for finding in result.get("analysis", []):
-            if "Potential Severity: High" in finding.get("analysis", "").lower():
+            if re.search(r"(potential severity: high|severity: high)", finding.get("analysis", ""), re.IGNORECASE):
                 high_severity_found = True
                 
 
