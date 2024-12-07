@@ -52,14 +52,15 @@ def analyze_code_chunk(chunk, chat_model):
         {chunk}
 
         If it's a code file, provide:
-        - Vulnerability description in detail
+        - A summary of each identified issue.
+        - Detailed explanation of each issue.
         - Confidence (low, medium, high)
         - Potential severity (low, medium, high)
         - Suggestions for fixing the issue
         
         If it's a terraform file, provide:
         - A summary of identified issues.
-        - Detailed explanations of each issue.
+        - Detailed explanation of each issue.
         - Confidence levels (low, medium, high).
         - Severity levels (low, medium, high).
         - Suggestions for fixing each issue.
