@@ -52,7 +52,7 @@ def analyze_code_chunk(chunk, chat_model):
         {chunk}
 
         If it's a code file, provide:
-        - Vulnerability description
+        - Vulnerability description in detail
         - Confidence (low, medium, high)
         - Potential severity (low, medium, high)
         - Suggestions for fixing the issue
